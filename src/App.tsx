@@ -27,6 +27,7 @@ function App() {
   function searching(search: string, isEmpted: boolean, number: number) {
     if (isEmpted) {
       setArray([]);
+
       setPage(1);
     } else {
     }
