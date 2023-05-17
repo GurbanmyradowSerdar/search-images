@@ -15,6 +15,7 @@ import { ISearchResponse, Photo } from "./data/modul";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AxiosRequestConfig } from "axios";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -31,11 +32,10 @@ function App() {
     }
     setIsDisabled(true);
 
-    AxiosInstance.get<ISearchResponse>(
+    AxiosInstance.get<ISearchResponse, AxiosRequestConfig>(
       `search?page=${number}&per_page=10&query=${search}`
     )
       .then((response) => {
-        4;
         if (isEmpted) {
           setArray(response.data.photos);
           setIsDisabled(false);
@@ -44,7 +44,7 @@ function App() {
           setIsDisabled(false);
         }
       })
-      .catch((error) => {
+      .catch(() => {
         errorMessage();
         setIsDisabled(false);
       });
