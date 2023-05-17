@@ -76,8 +76,8 @@ function App() {
           spacing={3}
           sx={{
             fontSize: {
-              xs: "9px",
-              sm: "10px",
+              xs: "11px",
+              sm: "12px",
               md: "14px",
               lg: "18px",
             },
@@ -122,8 +122,8 @@ function App() {
                             alignItems={"center"}
                             sx={{
                               fontSize: {
-                                xs: "9px",
-                                sm: "10px",
+                                xs: "11px",
+                                sm: "12px",
                                 md: "14px",
                                 lg: "16px",
                               },
