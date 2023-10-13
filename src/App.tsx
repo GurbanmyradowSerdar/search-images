@@ -130,9 +130,7 @@ function App() {
                             }}
                           >
                             <img
-                              src={
-                                isMobile ? item.src.portrait : item.src.medium
-                              }
+                              src={item.src.medium}
                               alt={item.photographer}
                               style={{
                                 objectFit: "contain",
