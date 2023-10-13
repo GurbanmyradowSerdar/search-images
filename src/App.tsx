@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  CardMedia,
   CircularProgress,
   TextField,
   Typography,
@@ -24,12 +23,10 @@ function App() {
   const [isDisabled, setIsDisabled] = useState(false);
   const [page, setPage] = useState(1);
 
-  function searching(search: string, isEmpted: boolean, number: number) {
-    if (isEmpted) {
+  function searching(search: string, isEmpty: boolean, number: number) {
+    if (isEmpty) {
       setArray([]);
-
       setPage(1);
-    } else {
     }
     setIsDisabled(true);
 
@@ -37,16 +34,16 @@ function App() {
       `search?page=${number}&per_page=10&query=${search}`
     )
       .then((response) => {
-        if (isEmpted) {
+        if (isEmpty) {
           setArray(response.data.photos);
-          setIsDisabled(false);
         } else {
           setArray([...array, ...response.data.photos]);
-          setIsDisabled(false);
         }
       })
       .catch(() => {
         errorMessage();
+      })
+      .finally(() => {
         setIsDisabled(false);
       });
   }
@@ -92,6 +89,9 @@ function App() {
               size="medium"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) =>
+                e.key === "Enter" ? searching(search, true, 1) : null
+              }
             />
             <LoadingButton
               variant="contained"
@@ -129,14 +129,14 @@ function App() {
                               },
                             }}
                           >
-                            <CardMedia
-                              component={"img"}
+                            <img
                               src={
-                                isMobile
-                                  ? item.src.portrait
-                                  : item.src.landscape
+                                isMobile ? item.src.portrait : item.src.medium
                               }
                               alt={item.photographer}
+                              style={{
+                                objectFit: "contain",
+                              }}
                             />
                             <LoadingButton
                               variant="contained"
