@@ -19,7 +19,6 @@ import { AxiosRequestConfig } from "axios";
 function App() {
   const [search, setSearch] = useState("");
   const [array, setArray] = useState<Photo[]>([]);
-  const isMobile = useMediaQuery("(max-width: 400px)");
   const [isDisabled, setIsDisabled] = useState(false);
   const [page, setPage] = useState(1);
 
