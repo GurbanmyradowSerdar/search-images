@@ -9,7 +9,7 @@ here you can:
 
 technologies:
 
-1. vite.js
+1. Vite.js
 2. MUI
 3. TS
 4. Pexel API
